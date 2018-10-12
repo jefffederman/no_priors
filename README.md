@@ -1,5 +1,5 @@
 # no_priors
-Rubocop only your changed lines
+Run Rubocop on only your changed lines.
 
 ## Install
 `gem install no_priors`
