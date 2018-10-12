@@ -3,7 +3,7 @@
 # new_code = NewCode.new(diff)
 class NewCode
   CHANGED_FILE_REGEX = /^\+\+\+ b\/(.*)/
-  UNIFIED_DIFF_REGEX = /@@ -\d+,\d+ \+(\d+),(\d+)/
+  UNIFIED_DIFF_REGEX = /@@ -\d+,\d+ \+(\d+),?(\d+)?/
   # TODO: unified diff regex only handles two way diff,
   # but it's possible to have a three way diff, e.g.,
   # @@@ ... ... ... @@@, or a four way diff, e.g.,
@@ -39,9 +39,6 @@ class NewCode
         @prev_changed_file = curr_changed_file
         @curr_changed_file = nil
       elsif line.match? UNIFIED_DIFF_REGEX
-        unified_diff_data = line.match(UNIFIED_DIFF_REGEX)
-        diff_start = unified_diff_data[1].to_i
-        diff_end = diff_start + unified_diff_data[2].to_i
         @changed_lines.concat line_numbers(line)
       elsif i == diff.lines.length - 1
         record_info if prev_changed_file
@@ -58,7 +55,15 @@ class NewCode
   def line_numbers(line)
     unified_diff_data = line.match(UNIFIED_DIFF_REGEX)
     diff_start = unified_diff_data[1].to_i
-    diff_end = diff_start + unified_diff_data[2].to_i
+
+    if unified_diff_data[2]
+      line_count = unified_diff_data[2].to_i
+      return [] if line_count.zero?
+      diff_end = diff_start + line_count
+    else
+      diff_end = diff_start + 1
+    end
+
     (diff_start...diff_end).to_a
   end
 end
