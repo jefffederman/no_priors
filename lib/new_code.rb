@@ -4,6 +4,11 @@
 class NewCode
   CHANGED_FILE_REGEX = /^\+\+\+ b\/(.*)/
   UNIFIED_DIFF_REGEX = /@@ -\d+,\d+ \+(\d+),(\d+)/
+  # TODO: unified diff regex only handles two way diff,
+  # but it's possible to have a three way diff, e.g.,
+  # @@@ ... ... ... @@@, or a four way diff, e.g.,
+  # @@@@ ... ... ... ... @@@@, etc.
+  # See
 
   attr_reader :files_and_lines
 
