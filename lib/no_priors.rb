@@ -26,7 +26,7 @@ class NoPriors
       matches = line.match(LINE_MATCH_REGEX)
       filename = matches[:filename]
       line_number = matches[:line_number].to_i
-      if new_code.files_and_lines[filename].include?(line_number)
+      if new_code.files_and_lines.fetch(filename, []).include?(line_number)
         @offenses.push line
       end
     end
