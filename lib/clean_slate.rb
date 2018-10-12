@@ -1,5 +1,4 @@
 require_relative './new_code'
-require 'ruby-prof'
 
 class CleanSlate
   LINE_MATCH_REGEX = /^(?<filename>.+\.rb):(?<line_number>\d+)/
@@ -12,7 +11,6 @@ class CleanSlate
     new_code = NewCode.new(diff)
     filenames = new_code.filenames
     @offenses = []
-    # RubyProf.start
     rubocop_output = `rubocop #{filenames.join(' ')}`
     line_matches = rubocop_output.lines.grep(LINE_MATCH_REGEX)
     line_matches.each do |line|
@@ -23,10 +21,6 @@ class CleanSlate
         @offenses.push line
       end
     end
-    #
-    # result = RubyProf.stop
-    # printer = RubyProf::FlatPrinter.new(result)
-    # printer.print(STDOUT)
   end
 end
 
