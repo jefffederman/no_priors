@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.summary = 'Rubocop your diffed lines'
   spec.authors = ['Jeff Federman']
   spec.email = 'jefffederman@gmail.com'
-  spec.files = ['lib/clean_slate.rb']
+  spec.files = ['lib/clean_slate.rb', 'lib/new_code.rb']
   spec.homepage = ''
   spec.license = 'MIT'
 end

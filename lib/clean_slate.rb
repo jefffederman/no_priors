@@ -1,4 +1,4 @@
-require_relative './new_code'
+require 'new_code'
 
 class CleanSlate
   LINE_MATCH_REGEX = /^(?<filename>.+\.rb):(?<line_number>\d+)/
