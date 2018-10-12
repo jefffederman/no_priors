@@ -1,4 +1,4 @@
-require 'new_code'
+require 'no_priors/new_code'
 
 class NoPriors
   LINE_MATCH_REGEX = /^(?<filename>.+\.rb):(?<line_number>\d+)/
