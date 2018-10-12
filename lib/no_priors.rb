@@ -1,6 +1,6 @@
 require 'new_code'
 
-class CleanSlate
+class NoPriors
   LINE_MATCH_REGEX = /^(?<filename>.+\.rb):(?<line_number>\d+)/
 
   attr_reader :offenses
