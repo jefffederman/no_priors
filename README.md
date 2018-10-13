@@ -1,8 +1,15 @@
 # no_priors
 Run Rubocop on only your changed lines.
 
+## Dependencies
+NoPriors has a dependency on Rubocop. Either install globally:
+`gem install rubocop`
+
+Or include in your Gemfile:
+`gem 'no_priors'`
+
 ## Install
-`gem install no_priors`
+`gem install no_priors` (or `bundle install` if using a `Gemfile`)
 
 ## Usage
 ```ruby
