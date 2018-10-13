@@ -8,7 +8,7 @@ NoPriors has a dependency on Rubocop. Either install globally:
 Or include in your Gemfile:
 `gem 'no_priors'`
 
-## Install
+## Installing
 `gem install no_priors` (or `bundle install` if using a `Gemfile`)
 
 ## Usage
