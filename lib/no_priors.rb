@@ -1,4 +1,5 @@
 require 'no_priors/new_code'
+require 'open3'
 
 class NoPriors
   LINE_MATCH_REGEX = /^(?<filename>.+\.rb):(?<line_number>\d+)/
@@ -10,8 +11,10 @@ class NoPriors
     new_code = NewCode.new(diff)
     filenames = new_code.filenames
     @offenses = []
-    rubocop_output = `rubocop #{filenames.join(' ')}`
-    line_matches = rubocop_output.lines.grep(LINE_MATCH_REGEX)
+    rc_out_str, _rc_err_str, _status = Open3.capture3 \
+      'rubocop',
+      filenames.join(' ')
+    line_matches = rc_out_str.lines.grep(LINE_MATCH_REGEX)
     collect_offenses(new_code, line_matches)
   rescue Errno::ENOENT => e
     puts e.message + '. Please install rubocop.'
