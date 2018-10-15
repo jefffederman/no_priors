@@ -13,7 +13,7 @@ class NoPriors
     rubocop_output = `rubocop #{filenames.join(' ')}`
     line_matches = rubocop_output.lines.grep(LINE_MATCH_REGEX)
     collect_offenses(new_code, line_matches)
-  rescue Error::ENOENT => e
+  rescue Errno::ENOENT => e
     puts e.message + '. Please install rubocop.'
   end
 
