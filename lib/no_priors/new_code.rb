@@ -1,5 +1,5 @@
 # E.g.,
-# diff = `git diff master *.rb`
+# diff = `git diff --unified=0 *.rb`
 # new_code = NewCode.new(diff)
 class NewCode
   CHANGED_FILE_REGEX = /^\+\+\+ b\/(.*)/
