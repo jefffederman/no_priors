@@ -6,14 +6,14 @@ NoPriors has a dependency on Rubocop. Either install globally:
 `gem install rubocop`
 
 Or include in your Gemfile:
-`gem 'no_priors'`
+`gem 'rubocop'`
 
 ## Installing
 `gem install no_priors` (or `bundle install` if using a `Gemfile`)
 
 ## Usage
 ```ruby
-diff = `git diff --unified=0` # only returns changed lines, no context
+diff = `git diff --unified=0 *.rb` # only returns changed lines, no context
 np = NoPriors.new(diff)
 np.offenses
 ```
