@@ -2,7 +2,7 @@ require 'no_priors/new_code'
 require 'open3'
 
 class NoPriors
-  LINE_MATCH_REGEX = /^(?<filename>.+\.rb):(?<line_number>\d+)/
+  LINE_MATCH_REGEX = /^(?<filename>[^:]+):(?<line_number>\d+)/
 
   attr_reader :offenses
 
