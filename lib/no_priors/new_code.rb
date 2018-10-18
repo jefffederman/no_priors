@@ -3,7 +3,7 @@
 # new_code = NewCode.new(diff)
 class NewCode
   CHANGED_FILE_REGEX = /^\+\+\+ b\/(.*)/
-  UNIFIED_DIFF_REGEX = /@@ -\d+,\d+ \+(\d+),?(\d+)?/
+  UNIFIED_DIFF_REGEX = /@@ -\d+,?\d+? \+(\d+),?(\d+)?/
   # TODO: unified diff regex only handles two way diff,
   # but it's possible to have a three way diff, e.g.,
   # @@@ ... ... ... @@@, or a four way diff, e.g.,
